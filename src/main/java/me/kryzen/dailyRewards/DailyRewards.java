@@ -30,6 +30,7 @@ public final class DailyRewards extends JavaPlugin {
         } catch (SQLException e) {
             getLogger().severe("Couldn't connect to database! Disabling plugin");
             getServer().getPluginManager().disablePlugin(this);
+            return;
         }
 
         // Commands

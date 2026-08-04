@@ -12,7 +12,7 @@ public class DatabaseManager {
 
     public void connect(File dataFolder) throws SQLException {
         dataFolder.mkdirs();
-        connection = DriverManager.getConnection("jdbc:sqlite:", dataFolder.getAbsolutePath(), "/database.db");
+        connection = DriverManager.getConnection("jdbc:sqlite:" + dataFolder.getAbsolutePath() + "/database.db");
     }
 
     public void createTable() throws SQLException {
@@ -25,7 +25,6 @@ public class DatabaseManager {
         String run = "SELECT last_claim, streak FROM daily_rewards WHERE uuid = ?";
         PreparedStatement statement = connection.prepareStatement(run);
         statement.setString(1, uuid.toString());
-        statement.executeUpdate();
 
         ResultSet result = statement.executeQuery();
         if (result.next()) {

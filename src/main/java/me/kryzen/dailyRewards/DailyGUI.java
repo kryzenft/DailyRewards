@@ -27,15 +27,15 @@ public class DailyGUI implements InventoryHolder {
         this.inventory = Bukkit.createInventory(this, 27, Component.text("Daily Reward").color(NamedTextColor.DARK_GRAY));
 
         long currentTime = System.currentTimeMillis();
-        long difference = currentTime = data.lastClaim();
+        long difference = currentTime - data.lastClaim();
 
         if (data.lastClaim() == 0 || difference >= 86400000) {
-            // set
+            inventory.setItem(13, getClaimItem(data.streak()));
         } else {
             long remainingTime = 86400000 - difference;
             long hours = TimeUnit.MILLISECONDS.toHours(remainingTime);
             long minutes = TimeUnit.MILLISECONDS.toMinutes(remainingTime);
-            // set
+            inventory.setItem(13, getCooldownItem(hours, minutes));
         }
 
     }

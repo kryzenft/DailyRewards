@@ -32,6 +32,7 @@ public class RewardManager {
             long minutes = TimeUnit.MILLISECONDS.toMinutes(remainingTime);
 
             player.sendMessage(Component.text("Please wait " + hours + "h" + minutes + "m to claim again!!").color(NamedTextColor.RED));
+            return;
         }
 
         int newStreak;
@@ -68,7 +69,7 @@ public class RewardManager {
             case 3,4,5,6 -> {
                 player.getInventory().addItem(ItemStack.of(Material.IRON_INGOT, 12));
                 player.sendMessage(Component.text("Claimed! ").color(NamedTextColor.GREEN)
-                        .append(Component.text("Iron Ingot x16 ").color(NamedTextColor.WHITE))
+                        .append(Component.text("Iron Ingot x12 ").color(NamedTextColor.WHITE))
                         .append(Component.text("(Streak: " + streak + ")").color(NamedTextColor.LIGHT_PURPLE)));
             }
             default -> {

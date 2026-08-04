@@ -72,6 +72,7 @@ public class DailyRewardsCommand {
 
                                                                     if (target == null) {
                                                                         sender.sendMessage(Component.text("Player not found or offline!").color(NamedTextColor.RED));
+                                                                        return Command.SINGLE_SUCCESS;
                                                                     }
 
                                                                     Bukkit.getAsyncScheduler().runNow(dailyRewards, task -> {
